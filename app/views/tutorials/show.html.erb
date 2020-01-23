@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<% @type = @tutorial.type_id
+case @type
+when 1
+	controller.redirect_to @tutorial.content
+when 2 %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tutorial.name %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @tutorial.content %>
+</p>
+
+<% when 3
+	@youtube_data = @tutorial.content
+	@episode_id = @youtube_data.split("?v=")[1]
+%>
+	<iframe src='https://www.youtube.com/embed/<%= @episode_id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe><br/>
+
+<% when 4
+	controller.redirect_to @tutorial.content
+end %>
+
+<%= link_to 'Edit', edit_tutorial_path(@tutorial) %> |
+<%= link_to 'Back', tutorials_path %>

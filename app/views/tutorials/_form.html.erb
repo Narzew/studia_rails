@@ -1,0 +1,52 @@
+<%= form_with(model: tutorial, local: true) do |form| %>
+  <% if tutorial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tutorial.errors.count, "error") %> prohibited this tutorial from being saved:</h2>
+
+      <ul>
+        <% tutorial.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+	<%= form.collection_select(:category_id, Category.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type_id %>
+    <%= form.collection_select(:type_id, Type.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area(:description, size: '100x20') %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area(:content, size: '200x40') %>
+  </div>
+
+  <div class="field">
+    <%= form.label :complete %>
+    <%= form.check_box :complete %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tutorials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Complete</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tutorials.each do |tutorial| %>
+      <tr>
+	  <% @cat_key = Category.find_by(:id=>tutorial.category_id) %>
+	  <% @type_key = Type.find_by(:id=>tutorial.type_id) %>
+	  
+        <td><%= link_to tutorial.name, tutorial %></td>
+        <td><%= @cat_key.name %></td>
+        <td><%= @type_key.name %></td>
+        <td><%= tutorial.description %></td>
+        <td><%= tutorial.complete %></td>
+        <td><%= link_to 'Show', tutorial %></td>
+        <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
+        <td><%= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tutorial', new_tutorial_path %>
