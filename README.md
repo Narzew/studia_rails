@@ -1,24 +1,14 @@
-# README
+To run this application:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1) Install Ruby
+2) Install Rails
+3) Download project and go to project folder
+4) Run server using command: rails server
+5) Open browser and go to one of following urls:
 
-Things you may want to cover:
+* localhost:3000/users -> To see and edit users
+* localhost:3000/types -> To edit types of data
+* localhost:3000/categories -> To see and edit tutorials
+* localhost:3000/tutorials -> To see an edit tutorials
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If there were a problem in third step, try running "bundle install" command
